@@ -1,5 +1,6 @@
 # SetThings
 >“Spend less time on setting screens. Spend more time on meaning.” — Aristotle
+
 A lightweight, flexible preference/settings view builder for SwiftUI.
 Supports text, numbers, switches, dates, pickers, custom views and nesting.
 Runs on iOS and macOS
@@ -50,21 +51,21 @@ SetThings(items: [
 
 ## 🧱 Available Types
 
-|Type|Description|
-|--—--|----—-|
-|.text|Plain text input|
-|.number|Decimal input (filtered)|
-|.bool|Toggle switch|
-|.password|Secure input|
-|.selectString|Menu picker|
-|.date|Date only (DateOnly)|
-|.time|Time only (TimeOnly)|
-|.dateAndTime|Full DatePicker|
-|.color|Color picker|
-|.view|Static view (no interactivity)|
-|.block|Dynamic view with access to live values|
-|.group|Indented group (can be nested)|
-|.section|Section header (like a form section)|
+| Type | Description |
+| --- | --- |
+| .text | Plain text input |
+| .number | Decimal input (filtered) |
+| .bool | Toggle switch |
+| .password | Secure input |
+| .selectString | Menu picker |
+| .date | Date only (DateOnly) |
+| .time | Time only (TimeOnly) |
+| .dateAndTime | Full DatePicker |
+| .color | Color picker |
+| .view | Static view (no interactivity) |
+| .block | Dynamic view with access to live values |
+| .group | Indented group (can be nested) |
+| .section | Section header (like a form section) |
 
 ## 📷 Screenshots
 - iOS
