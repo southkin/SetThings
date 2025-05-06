@@ -27,7 +27,7 @@ Runs on iOS and macOS
 
 ## 📦 Installation
 ```swift
-.package(url: "https://github.com/southpiece/SetThings.git", from: "1.0.0")
+.package(url: "https://github.com/southkin/SetThings.git", from: "1.0.0")
 ```
 
 ## 🚀 Usage
