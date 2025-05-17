@@ -178,8 +178,9 @@ struct ThingRowView: View {
                         step: 1
                     )
                     .padding(.trailing)
-
-                    label?(intValue) ?? AnyView(Text("\(intValue)"))
+                    if let label = label {
+                        label(intValue)
+                    }
                 }
                 .onAppear {
                     intValue = defaultValue ?? range.lowerBound

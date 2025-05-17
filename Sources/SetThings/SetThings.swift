@@ -93,6 +93,7 @@ struct SetThingsPreviewWrapper: View {
                 MinimalThingItem(name: "", type: .block(AnyView(ValueSummaryView(values: $editedValues)))),
             ])),
             MinimalThingItem(key:"sliderBasic" , name: "Basic Slider", type: .slider(range: -2...2, defaultValue: 0)),
+            MinimalThingItem(key:"sliderBasic NoneLabel" , name: "Basic Slider None Label", type: .slider(range: -2...2, defaultValue: 0, label: nil)),
             MinimalThingItem(key:"sliderWithLabel" , name: "Slider with Label", type: .slider(range: 0...50, defaultValue: 0) { value in
                 AnyView(Text("\(value)/50").foregroundColor(.blue).font(.headline))
             }),
