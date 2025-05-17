@@ -90,6 +90,10 @@ struct SetThingsPreviewWrapper: View {
 
     var body: some View {
         SetThings(items: [
+            MinimalThingItem(key:"sliderBasic" , name: "Basic Slider", type: .slider(range: 0...100, defaultValue: 42)),
+            MinimalThingItem(key:"sliderWithLabel" , name: "Slider with Label", type: .slider(range: -50...50, defaultValue: 0) { value in
+                AnyView(Text("\(value)점").foregroundColor(.blue).font(.headline))
+            }),
             MinimalThingItem(name: "Debug", type: .section([
                 MinimalThingItem(name: "", type: .block(AnyView(ValueSummaryView(values: $editedValues)))),
             ])),

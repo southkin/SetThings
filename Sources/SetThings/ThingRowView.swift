@@ -161,7 +161,28 @@ struct ThingRowView: View {
                 .onAppear {
                     colorValue = defaultValue
                 }
+            case .slider(let range, let defaultValue, let label):
+                HStack {
+                    Slider(
+                        value: Binding(
+                            get: { Double(intValue) },
+                            set: {
+                                let newValue = Int(round($0))
+                                guard intValue != newValue else { return }
+                                intValue = newValue
+                                onEdited?(item.key, intValue)
+                            }
+                        ),
+                        in: Double(range.lowerBound)...Double(range.upperBound),
+                        step: 1
+                    )
+                    .padding(.trailing)
 
+                    label?(intValue) ?? AnyView(Text("\(intValue)"))
+                }
+                .onAppear {
+                    intValue = defaultValue ?? range.lowerBound
+                }
             case .view(let customView):
                 customView
             default:

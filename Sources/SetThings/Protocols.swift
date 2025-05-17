@@ -63,6 +63,9 @@ public enum ThingType {
     case block(AnyView)
     case section([ThingItem])
     case group([ThingItem])
+    case slider(range: ClosedRange<Int>, defaultValue: Int? = nil, label: ((Int) -> AnyView)? = { value in
+        AnyView(Text("\(value)"))
+    })
 }
 
 public protocol ThingItem {
