@@ -12,6 +12,7 @@ struct ThingRowView: View {
 
     @State private var stringValue: String = ""
     @State private var boolValue: Bool = false
+    @State private var intValue: Int = 0
     @State private var dateValue: Date = Date()
     @State private var colorValue: Color = .clear
     

@@ -1,5 +1,5 @@
 # SetThings
->“Spend less time on setting screens. Spend more time on meaning.” — Aristotle
+>"Settings shouldn’t be a thing. Just set your things." — *Aristotle*
 
 A lightweight, flexible preference/settings view builder for SwiftUI.
 Supports text, numbers, switches, dates, pickers, custom views and nesting.
@@ -18,6 +18,7 @@ Runs on iOS and macOS
     - .password
     - .selectString
     - .color
+    - .slider
     - .view
     - .block
     - .group
@@ -75,6 +76,7 @@ SetThings(items: [
 | .time | Time only (TimeOnly) |
 | .dateAndTime | Full DatePicker |
 | .color | Color picker |
+| .slider | Range slider with customizable labels |
 | .view | Static view (no interactivity) |
 | .block | Dynamic view with access to live values |
 | .group | Indented group (can be nested) |
@@ -90,6 +92,10 @@ SetThings(items: [
             MinimalThingItem(name: "Debug", type: .section([
                 MinimalThingItem(name: "", type: .block(AnyView(ValueSummaryView(values: $editedValues)))),
             ])),
+            MinimalThingItem(key:"sliderBasic" , name: "Basic Slider", type: .slider(range: -2...2, defaultValue: 0)),
+            MinimalThingItem(key:"sliderWithLabel" , name: "Slider with Label", type: .slider(range: 0...50, defaultValue: 0) { value in
+                AnyView(Text("\(value)/50").foregroundColor(.blue).font(.headline))
+            }),
             MinimalThingItem(key:"textField" , name: "Text Field", type: .text(placeholder: "Enter text", defaultValue: "Sample"), description: "it's description!!!"),
             MinimalThingItem(key:"numberField" , name: "Number Field", type: .number(placeholder: "1234", defaultValue: Decimal(42))),
             MinimalThingItem(key:"password" , name: "Password", type: .password(placeholder: "Secret")),

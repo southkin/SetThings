@@ -76,27 +76,26 @@ struct ValueSummaryView: View {
         .padding()
     }
 }
+
 #Preview("ThingType Showcase") {
     SetThingsPreviewWrapper()
 }
-#if os(macos)
 @available(macOS 14.0, *)
 #Preview("macOS Preview", traits: .fixedLayout(width: 400, height: 550)) {
     SetThingsPreviewWrapper()
 }
-#endif
 struct SetThingsPreviewWrapper: View {
     @State var editedValues: [String: Any] = [:]
 
     var body: some View {
         SetThings(items: [
-            MinimalThingItem(key:"sliderBasic" , name: "Basic Slider", type: .slider(range: 0...100, defaultValue: 42)),
-            MinimalThingItem(key:"sliderWithLabel" , name: "Slider with Label", type: .slider(range: -50...50, defaultValue: 0) { value in
-                AnyView(Text("\(value)점").foregroundColor(.blue).font(.headline))
-            }),
             MinimalThingItem(name: "Debug", type: .section([
                 MinimalThingItem(name: "", type: .block(AnyView(ValueSummaryView(values: $editedValues)))),
             ])),
+            MinimalThingItem(key:"sliderBasic" , name: "Basic Slider", type: .slider(range: -2...2, defaultValue: 0)),
+            MinimalThingItem(key:"sliderWithLabel" , name: "Slider with Label", type: .slider(range: 0...50, defaultValue: 0) { value in
+                AnyView(Text("\(value)/50").foregroundColor(.blue).font(.headline))
+            }),
             MinimalThingItem(key:"textField" , name: "Text Field", type: .text(placeholder: "Enter text", defaultValue: "Sample"), description: "it's description!!!"),
             MinimalThingItem(key:"numberField" , name: "Number Field", type: .number(placeholder: "1234", defaultValue: Decimal(42))),
             MinimalThingItem(key:"password" , name: "Password", type: .password(placeholder: "Secret")),
