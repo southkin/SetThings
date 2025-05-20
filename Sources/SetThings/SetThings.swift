@@ -80,10 +80,12 @@ struct ValueSummaryView: View {
 #Preview("ThingType Showcase") {
     SetThingsPreviewWrapper()
 }
+#if os(macOS)
 @available(macOS 14.0, *)
 #Preview("macOS Preview", traits: .fixedLayout(width: 400, height: 550)) {
     SetThingsPreviewWrapper()
 }
+#endif
 struct SetThingsPreviewWrapper: View {
     @State var editedValues: [String: Any] = [:]
 
