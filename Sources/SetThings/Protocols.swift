@@ -74,7 +74,7 @@ public protocol ThingItem {
     var type: ThingType { get }
     var description: String? { get set }
 }
-extension Bool {
+public extension Bool {
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         
