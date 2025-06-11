@@ -74,3 +74,23 @@ public protocol ThingItem {
     var type: ThingType { get }
     var description: String? { get set }
 }
+extension Bool {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        
+        if let boolValue = try? container.decode(Bool.self) {
+            self = boolValue
+        } else if let stringValue = try? container.decode(String.self) {
+            switch stringValue.lowercased() {
+            case "true", "1", "yes": self = true
+            case "false", "0", "no": self = false
+            default:
+                throw DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid boolean string: \(stringValue)")
+            }
+        } else if let intValue = try? container.decode(Int.self) {
+            self = intValue != 0
+        } else {
+            throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Expected Bool, String, or Int"))
+        }
+    }
+}
