@@ -71,6 +71,12 @@ public enum ThingType {
 public protocol ThingItem {
     var key: String { get }
     var name: String { get }
+    var titleView: AnyView? { get }
     var type: ThingType { get }
     var description: String? { get set }
+}
+extension ThingItem {
+    func getTitleView() -> AnyView {
+        titleView ?? AnyView(Text(name))
+    }
 }

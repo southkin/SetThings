@@ -26,12 +26,12 @@ public struct SetThings: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Text(item.name)
                         .fontWeight(.bold)
-                        .padding(.bottom)
+                        .padding(.bottom,10)
                     ForEach(Array(items.enumerated()), id: \.element.key) { index, item in
                                     render(item)
-                                        .padding(.leading)
                                         .padding(.bottom, index == items.count - 1 ? 0 : 8) // 마지막은 0
                                 }
+                    .padding(.leading)
                 }
             )
         case .block(let view):
@@ -57,6 +57,7 @@ extension SetThings {
 
 struct MinimalThingItem: ThingItem {
     var key: String = UUID().uuidString
+    var titleView: AnyView?
     var name: String
     var type: ThingType
     var description: String?
@@ -90,11 +91,15 @@ struct SetThingsPreviewWrapper: View {
     @State var editedValues: [String: Any] = [:]
 
     var body: some View {
+        let t = AnyView(HStack {
+            Text("sliderBasic")
+            Text("ⓘ")
+        })
         SetThings(items: [
             MinimalThingItem(name: "Debug", type: .section([
                 MinimalThingItem(name: "", type: .block(AnyView(ValueSummaryView(values: $editedValues)))),
             ])),
-            MinimalThingItem(key:"sliderBasic" , name: "Basic Slider", type: .slider(range: -2...2, defaultValue: 0)),
+            MinimalThingItem(key:"sliderBasic", name: "Basic Slider", type: .slider(range: -2...2, defaultValue: 0), description: "test"),
             MinimalThingItem(key:"sliderBasic NoneLabel" , name: "Basic Slider None Label", type: .slider(range: -2...2, defaultValue: 0, label: nil)),
             MinimalThingItem(key:"sliderWithLabel" , name: "Slider with Label", type: .slider(range: 0...50, defaultValue: 0) { value in
                 AnyView(Text("\(value)/50").foregroundColor(.blue).font(.headline))

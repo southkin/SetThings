@@ -19,7 +19,7 @@ struct ThingRowView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text(item.name)
+                item.getTitleView()
                 if let desc = item.description {
                     Text(desc)
                         .font(.caption2)
